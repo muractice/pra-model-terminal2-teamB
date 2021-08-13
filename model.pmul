@@ -1,0 +1,26 @@
+@startuml
+class LineContract
+class BMember
+class Terminal
+class Order
+class OrderHistory
+class BMobileContract
+class NumberOfLineContract
+class NumberOfTerminal
+class MemberName
+class TerminalName
+class BId
+class BMobileContractNumber
+class TerminalList
+
+BMember -> BId
+BMember -> MemberName
+BMobileContract -d-> BId
+BMobileContract --> BMobileContractNumber
+BMobileContract --> LineContract
+BMobileContract --> NumberOfLineContract
+Terminal -> TerminalName
+TerminalList -> Terminal
+TerminalList -> NumberOfTerminal
+
+@enduml
