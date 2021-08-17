@@ -6,4 +6,8 @@ public class NumberOfTerminal {
     NumberOfTerminal(int value){
         this.value = value;
     }
+
+    public int getValue(){
+        return value;
+    }
 }

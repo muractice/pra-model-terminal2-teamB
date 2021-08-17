@@ -19,6 +19,7 @@ BMobileContract -d-> BId
 BMobileContract --> BMobileContractNumber
 BMobileContract --> LineContract
 BMobileContract --> NumberOfLineContract
+BMobileContract -r-> TerminalList
 Terminal -> TerminalName
 TerminalList -> Terminal
 TerminalList -> NumberOfTerminal

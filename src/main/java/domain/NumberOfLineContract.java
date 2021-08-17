@@ -6,4 +6,8 @@ public class NumberOfLineContract {
     public NumberOfLineContract(int value) {
         this.value = value;
     }
+
+    public boolean greaterThan(NumberOfTerminal numberOfTerminal){
+        return value > numberOfTerminal.getValue();
+    }
 }

@@ -12,8 +12,13 @@ public class BMobileContract {
         this.lineContracts = lineContracts;
     }
 
-    public NumberOfLineContract getNumberOfLineContract(){
+    private NumberOfLineContract getNumberOfLineContract(){
         return new NumberOfLineContract(lineContracts.size());
     }
 
+    public boolean acceptable(TerminalList terminalList){
+//        return lineContracts.size() > terminalList.getNumberOfTerminal().getValue();
+        return getNumberOfLineContract()
+                .greaterThan(terminalList.getNumberOfTerminal());
+    }
 }
