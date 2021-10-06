@@ -1,5 +1,5 @@
 package domain.order;
 
-public interface OrderRepository {
+public interface OrderHistoryRepository {
     void save(OrderHistory orderHistory);
 }

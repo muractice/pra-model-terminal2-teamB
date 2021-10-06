@@ -6,7 +6,7 @@ import domain.bMobileContract.BMobileContract;
 import domain.bMobileContract.BMobileContractRepository;
 import domain.order.OrderApplication;
 import domain.order.OrderHistory;
-import domain.order.OrderRepository;
+import domain.order.OrderHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +19,7 @@ public class TerminalOrderService {
     @Autowired
     private BMobileContractRepository bMobileContractRepository;
     @Autowired
-    private OrderRepository orderRepository;
+    private OrderHistoryRepository orderHistoryRepository;
 
     @Transactional
     public void order(OrderApplication orderApplication) throws Exception {
@@ -36,7 +36,7 @@ public class TerminalOrderService {
             throw new Exception("お申込できません。");
         }
 
-        orderRepository.save(
+        orderHistoryRepository.save(
                 new OrderHistory(
                         orderApplication.getBMobileContractNumber(),
                         bMember.getBMemberName(),
