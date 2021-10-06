@@ -6,6 +6,7 @@ import domain.bMobileContract.BMobileContract;
 import domain.bMobileContract.BMobileContractRepository;
 import domain.order.OrderApplication;
 import domain.order.OrderHistory;
+import domain.order.OrderHistoryFactory;
 import domain.order.OrderHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,8 @@ public class TerminalOrderService {
     private BMobileContractRepository bMobileContractRepository;
     @Autowired
     private OrderHistoryRepository orderHistoryRepository;
+    @Autowired
+    private OrderHistoryFactory orderHistoryFactory;
 
     @Transactional
     public void order(OrderApplication orderApplication) throws Exception {
@@ -37,8 +40,9 @@ public class TerminalOrderService {
         }
 
         orderHistoryRepository.save(
-                new OrderHistory(
+                orderHistoryFactory.createOrderHistory(
                         orderApplication.getBMobileContractNumber(),
+                        bMember.getBId(),
                         bMember.getBMemberName(),
                         orderApplication
                                 .getTerminalList()
