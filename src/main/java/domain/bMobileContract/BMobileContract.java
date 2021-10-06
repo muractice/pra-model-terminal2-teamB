@@ -14,7 +14,7 @@ public class BMobileContract {
     private final BMember bMember;
     private final LineContractList lineContractList;
 
-    public boolean acceptable(BId bId, TerminalList terminalList) {
+    private boolean acceptable(BId bId, TerminalList terminalList) {
         return isMatched(bId) && hasEnoughLineContract(terminalList);
     }
 
@@ -27,8 +27,6 @@ public class BMobileContract {
     }
 
     private boolean hasEnoughLineContract(TerminalList terminalList){
-        return lineContractList
-                .getNumberOfLineContract()
-                .greaterEqual(terminalList.getNumberOfTerminal());
+        return lineContractList.hasEnoughLineContract(terminalList.getNumberOfTerminal());
     }
 }

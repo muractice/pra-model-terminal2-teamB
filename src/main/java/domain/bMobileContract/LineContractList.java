@@ -1,5 +1,6 @@
 package domain.bMobileContract;
 
+import domain.terminal.NumberOfTerminal;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -11,7 +12,11 @@ public class LineContractList {
 
     private final List<LineContract> lineContracts;
 
-    public NumberOfLineContract getNumberOfLineContract(){
+    boolean hasEnoughLineContract(NumberOfTerminal numberOfTerminal) {
+        return getNumberOfLineContract().greaterEqual(numberOfTerminal);
+    }
+
+    private NumberOfLineContract getNumberOfLineContract(){
         return new NumberOfLineContract(lineContracts.size());
     }
 }
