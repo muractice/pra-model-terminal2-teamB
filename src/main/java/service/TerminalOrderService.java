@@ -5,7 +5,6 @@ import domain.bMember.BMemberRepository;
 import domain.bMobileContract.BMobileContract;
 import domain.bMobileContract.BMobileContractRepository;
 import domain.order.OrderApplication;
-import domain.order.OrderHistory;
 import domain.order.OrderHistoryFactory;
 import domain.order.OrderHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,15 +38,6 @@ public class TerminalOrderService {
             throw new Exception("お申込できません。");
         }
 
-        orderHistoryRepository.save(
-                orderHistoryFactory.createOrderHistory(
-                        orderApplication.getBMobileContractNumber(),
-                        bMember.getBId(),
-                        bMember.getBMemberName(),
-                        orderApplication
-                                .getTerminalList()
-                                .createTerminalNameList()
-                )
-        );
+        orderHistoryRepository.save(orderHistoryFactory.createOrderHistory(orderApplication, bMember));
     }
 }
