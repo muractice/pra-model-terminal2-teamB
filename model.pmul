@@ -1,27 +1,59 @@
 @startuml
-class LineContract
-class BMember
-class Terminal
-class Order
-class OrderHistory
-class BMobileContract
-class NumberOfLineContract
-class NumberOfTerminal
-class MemberName
-class TerminalName
-class BId
-class BMobileContractNumber
-class TerminalList
 
-BMember -> BId
-BMember -> MemberName
-BMobileContract -d-> BId
-BMobileContract --> BMobileContractNumber
-BMobileContract --> LineContract
-BMobileContract --> NumberOfLineContract
-BMobileContract -r-> TerminalList
-Terminal -> TerminalName
-TerminalList -> Terminal
-TerminalList -> NumberOfTerminal
+package bMember {
+    class BMember
+    class BId
+    class BMemberName
+    interface BMemberRepository
+}
+
+package bMobileContract {
+    class BMobileContract
+    class BMobileContractNumber
+    class LineContractList
+    class LineContract
+    class NumberOfLineContract
+    interface BMobileContractRepository
+}
+
+package terminal {
+    class TerminalList
+    class Terminal
+    class TerminalName
+    class TerminalNameList
+    class NumberOfTerminal
+}
+
+package order {
+    class OrderApplication
+    class OrderHistory
+    interface OrderRepository
+}
+
+BMember -d-> BId
+BMember -d-> BMemberName
+BMemberRepository --> BId
+BMemberRepository --> BMember
+BMobileContract -d-> BMember
+BMobileContract -d-> BMobileContractNumber
+BMobileContract -d-> LineContractList
+BMobileContractRepository --> BMobileContractNumber
+BMobileContractRepository --> BMobileContract
+LineContractList --> LineContract
+LineContractList --> NumberOfLineContract
+Terminal --> TerminalName
+TerminalList -d-> Terminal
+TerminalList -d-> NumberOfTerminal
+TerminalNameList --> TerminalName
+
+OrderApplication --> BId
+OrderApplication --> BMobileContractNumber
+OrderApplication --> TerminalList
+
+OrderHistory --> BMobileContractNumber
+OrderHistory --> BMemberName
+OrderHistory --> TerminalNameList
+
+OrderRepository --> OrderHistory
 
 @enduml

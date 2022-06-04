@@ -1,0 +1,36 @@
+@startuml
+
+namespace domain {
+    namespace bMember {
+    }
+    namespace bMobileContract {
+    }
+    namespace Terminal {
+    }
+    namespace order {
+    }
+}
+
+namespace service {
+
+}
+
+namespace datasource {
+    namespace bMember {
+    }
+    namespace bMobileContract {
+    }
+    namespace order {
+    }
+}
+
+domain.order --> domain.bMember
+domain.order --> domain.bMobileContract
+domain.order --> domain.Terminal
+domain.bMobileContract --> domain.bMember
+
+datasource.bMember --> domain.bMember
+datasource.bMobileContract --> domain.bMobileContract
+datasource.order --> domain.order
+
+@enduml
